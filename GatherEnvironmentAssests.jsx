@@ -1,5 +1,5 @@
 //==============================
-//  Gather the Episode Environnements v1.0
+//  Gather the Episode Environnements v1.1
 //==============================
 
 //  Functions gathering the psd files of the listed environnement for the requested episode.
@@ -43,7 +43,6 @@ function createUI(){
  * @param { string } JSONpath 
  */
 function gatherEnvironnementAssets( JSONpath){
-
     var JSONfile = new File( JSONpath );
     var episode = JSONfile.name.slice( 5 , 7 );
     //Creating the Array with all Assets per Shot.
@@ -89,9 +88,6 @@ function gatherEnvironnementAssets( JSONpath){
     {
         var confoFiles = filesToCopyFolder.getFiles( "*.psd" );
         for( i = 0 ; i < AssetsToCopy.length ; i++ ){
-            ProgressBar.value = i + 1 ;
-            ProgressCurrentValue.text = i + 1 ;
-            ProgressTotalValue.text = AssetsToCopy.length ;
             for( j = 0 ; j < confoFiles.length ; j++ ){
                 if( confoFiles[j].name.search( new RegExp( "_" + AssetsToCopy[i] + "_" , "gi" ) ) >= 0 ){
                     var TestFile = new File( destinationFolder.fsName + "/" + confoFiles[j].name );
